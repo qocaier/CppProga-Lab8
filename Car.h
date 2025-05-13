@@ -9,5 +9,7 @@ public:
 
 	double calcTax() override;
 
+	string getData() override { return " - Тачка стоит " + to_string(worth) + ", мощность: " + to_string(horsepower) + '\n'; };
+
 	~Car() {};
 };

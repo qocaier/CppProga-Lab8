@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "TaxRates.h"
 
 using namespace std;
@@ -16,6 +17,7 @@ public:
 
 	unsigned int getWorth() { return worth; };
 	void setWorth(unsigned int w) { worth = w; };
+	virtual string getData() = 0;
 
 	~Property() {};
 };

@@ -9,5 +9,7 @@ public:
 
 	double calcTax() override;
 
+	string getData() override { return " - Вилла стоит " + to_string(worth) + ", удаленность от города: " + to_string(distanceFromCity) + '\n'; };
+
 	~CountryHouse() {};
 };

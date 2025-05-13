@@ -1,6 +1,12 @@
 #include "Owner.h"
 #include <stdexcept>
 
+Owner::Owner(string fn, string nn) : fullname(fn), inn(nn) {
+	if (nn.length() != 12) throw invalid_argument("invalid argument");
+	string nums = "0123456789";
+	for (char c : nn) if (nums.find(c) == -1) throw invalid_argument("invalid argument");
+}
+
 void Owner::addProperty(Property* property)
 {
 	properties.push_back(property);

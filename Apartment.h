@@ -9,5 +9,7 @@ public:
 
 	double calcTax() override;
 
+	string getData() override { return " -  вартира стоит " + to_string(worth) + ", площадь: " + to_string(square) + '\n'; };
+
 	~Apartment() {};
 };
