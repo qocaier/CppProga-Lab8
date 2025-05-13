@@ -2,6 +2,7 @@
 
 class Property
 {
+protected:
 	double worth;
 public:
 	Property(double w) : worth(w) {};
