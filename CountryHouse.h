@@ -3,7 +3,11 @@
 
 class CountryHouse : public Property
 {
-	double distanceFromCity;
+	unsigned int distanceFromCity;
 public:
-	CountryHouse(double w, double dfc) : distanceFromCity(dfc), Property(w) {};
+	CountryHouse(unsigned int w, unsigned int dfc) : distanceFromCity(dfc), Property(w) {};
+
+	double calcTax() override;
+
+	~CountryHouse() {};
 };

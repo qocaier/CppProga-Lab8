@@ -5,5 +5,9 @@ class Apartment : public Property
 {
 	double square;
 public:
-	Apartment(double w, double s) : square(s), Property(w) {};
+	Apartment(unsigned int w, double s) : square(s), Property(w) {};
+
+	double calcTax() override;
+
+	~Apartment() {};
 };
