@@ -14,4 +14,6 @@ public:
 	void addProperty(Property* property);
 	void delProperty(unsigned int n);
 	double calcSumTax();
+
+	~Owner() {};
 };

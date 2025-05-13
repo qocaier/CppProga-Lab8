@@ -1,16 +1,20 @@
 #include "Owner.h"
+#include <stdexcept>
 
 void Owner::addProperty(Property* property)
 {
-
+	properties.push_back(property);
 }
 
 void Owner::delProperty(unsigned int n)
 {
-
+	if (n < 0 || n >= properties.size()) throw invalid_argument("invalid argument");
+	properties.erase(properties.begin() + n);
 }
 
 double Owner::calcSumTax()
 {
-	return 0.0;
+	double s = 0;
+	for (int i = 0; i < properties.size(); i++) s += properties[i]->calcTax();
+	return s;
 }
