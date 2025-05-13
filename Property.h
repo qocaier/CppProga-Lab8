@@ -1,4 +1,8 @@
 #pragma once
+#include "TaxRates.h"
+
+using namespace std;
+using namespace TAX_RATES;
 
 class Property
 {

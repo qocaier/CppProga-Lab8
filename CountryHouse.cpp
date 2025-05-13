@@ -2,5 +2,6 @@
 
 double CountryHouse::calcTax()
 {
-    return 0.0;
+    if (distanceFromCity <= LIMIT_DISTANCE_FROM_CITY) return worth * Apartment_TAX;
+    return worth * COUNTRY_HOUSE_TAX;
 }

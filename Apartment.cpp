@@ -2,5 +2,6 @@
 
 double Apartment::calcTax()
 {
-    return 0.0;
+    if (square <= LIMIT_Apartment_SQUARE) return worth * Apartment_TAX;
+    return worth * Apartment_LUXURY_TAX;
 }
