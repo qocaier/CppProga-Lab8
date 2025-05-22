@@ -1,15 +1,18 @@
 #pragma once
 #include <string>
 #include "TaxRates.h"
+#include "Ijsonio.h"
 
 using namespace std;
 using namespace TAX_RATES;
 
-class Property
+class Property : public Ijsonio
+//class Property
 {
 protected:
-	unsigned int worth;
+	unsigned int worth = 0;
 public:
+	Property() {};
 	Property(unsigned int w) : worth(w) {};
 
 	virtual double calcTax() = 0;

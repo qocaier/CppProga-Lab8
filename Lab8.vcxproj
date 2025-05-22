@@ -130,6 +130,7 @@
     <ClInclude Include="Apartment.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CountryHouse.h" />
+    <ClInclude Include="Ijsonio.h" />
     <ClInclude Include="Owner.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="TaxRates.h" />
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="Owner.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

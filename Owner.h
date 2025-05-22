@@ -1,8 +1,9 @@
 #pragma once
 #include <vector>
 #include "Property.h"
+#include "PropertySimpleFactory.h"
 
-class Owner
+class Owner : Ijsonio
 {
 	string fullname;
 	string inn;
@@ -13,6 +14,9 @@ public:
 	void addProperty(Property* property);
 	void delProperty(unsigned int n);
 	double calcSumTax();
+
+	void fromJson(nlohmann::json json) override;
+	nlohmann::json toJson() override;
 
 	string getData() { return fullname + ", »ÕÕ: " + inn + '\n'; };
 	vector<Property*> getProperties() { return properties; };

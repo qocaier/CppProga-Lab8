@@ -3,36 +3,43 @@
   <Class Name="Apartment">
     <Position X="4.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAABAAAAAQAAAIAA=</HashCode>
+      <HashCode>AAAQAAAAAAAAIAAAAAAAAAAAAAAAAABAAAAAQAAAIAA=</HashCode>
       <FileName>Apartment.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Car">
     <Position X="6.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAQAAAAAAQgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CountryHouse">
     <Position X="8.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQJAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>AAAQAAAAAAAQJAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>CountryHouse.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Owner">
     <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAIACAAAAAAAAAAAAAAAEAAAgAAAAAIAAAgAACAAA=</HashCode>
+      <HashCode>AAIQIACAAAgAAAAAAAAAAAEAAAgAAAAAIAAAgAACAAA=</HashCode>
       <FileName>Owner.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Property">
     <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAQAIAJAAAAAQAAAQA=</HashCode>
+      <HashCode>AAAQAAAAAAAAIAAAAAAAAAAAAAAQAIAJAAAAAQAAAQA=</HashCode>
       <FileName>Property.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ijsonio" Collapsed="true">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgABAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Ijsonio.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

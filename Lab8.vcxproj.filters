@@ -33,6 +33,9 @@
     <ClInclude Include="Owner.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Ijsonio.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Property.cpp">
@@ -54,5 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="Owner.json" />
   </ItemGroup>
 </Project>

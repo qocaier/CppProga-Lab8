@@ -1,0 +1,30 @@
+{
+  "fullname": "Max Kharaev",
+  "inn": "156234897956",
+  "properties": [
+    {
+      "Apartment": {
+        "worth": 45610565,
+        "square": 1462.5
+      }
+    },
+    {
+      "Car": {
+        "worth": 5462385,
+        "horsepower": 256.88
+      }
+    },
+    {
+      "Car": {
+        "worth": 1047000,
+        "horsepower": 90.01
+      }
+    },
+    {
+      "CountryHouse": {
+        "worth": 525000,
+        "distanceFromCity": 3
+      }
+    }
+  ]
+}

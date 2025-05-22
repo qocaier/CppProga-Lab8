@@ -3,11 +3,15 @@
 
 class CountryHouse : public Property
 {
-	unsigned int distanceFromCity;
+	unsigned int distanceFromCity = 0;
 public:
+	CountryHouse() {};
 	CountryHouse(unsigned int w, unsigned int dfc) : distanceFromCity(dfc), Property(w) {};
 
 	double calcTax() override;
+
+	void fromJson(nlohmann::json json) override;
+	nlohmann::json toJson() override;
 
 	string getData() override { return " - Вилла стоит " + to_string(worth) + ", удаленность от города: " + to_string(distanceFromCity) + '\n'; };
 

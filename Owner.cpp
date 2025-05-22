@@ -24,3 +24,14 @@ double Owner::calcSumTax()
 	for (int i = 0; i < properties.size(); i++) s += properties[i]->calcTax();
 	return s;
 }
+
+void Owner::fromJson(nlohmann::json json)
+{
+	fullname = json["fullname"].get<std::string>();
+	inn = json["inn"].get<std::string>();
+	vector<nlohmann::json> props = json["properties"].get<vector<nlohmann::json>>();
+	for (nlohmann::json prop : props) {
+		string key = prop.items().begin().key();
+		Property* p = PropertySimpleFactory::getProperty(key);
+	}
+}

@@ -6,3 +6,7 @@ double Car::calcTax()
     if (horsepower > HIGH_HORSEPOWER) return worth * CAR_LUXURY_TAX;
     return worth * CAR_TRUCK_TAX;
 }
+
+void Car::fromJson(nlohmann::json json)
+{
+}

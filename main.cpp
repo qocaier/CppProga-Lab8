@@ -28,9 +28,9 @@ const string main_tutorial_str = "[0] exit - выйти из программы\n[1] tutorial - 
 const string prop_tutorial_str = "[0] Квартира	[1] Тачка	[2] Вилла ";
 
 vector<Owner> a = {
-	Owner("Макс Хараев", "156234897956"),
-	Owner("Миша Бушуев", "489123785263"),
-	Owner("Кир Кетов", "874451223588")
+	Owner("Хараев Макс Александрович", "156234897956"),
+	Owner("Бушуев Миша _", "489123785263"),
+	Owner("Кетов Кир _", "874451223588")
 };
 
 int owner_choice();
@@ -42,6 +42,7 @@ int main() {
 	int k, f, n;
 	unsigned int v, s;
 	double p;
+	string fn1, fn2, fn3, nn;
 
 	a[0].addProperty(new Apartment(45610565, 1462.55));
 	a[0].addProperty(new Car(5462385, 256.88));
@@ -136,13 +137,31 @@ int main() {
 			break;
 		case ADD_OWNER:
 			try {
-				string fn, nn;
 				cout << "Введите ФИО собственника: ";
-				cin >> fn;
+				cin >> fn1 >> fn2 >> fn3;
+				while (cin.fail()) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "Некорректный ввод. Введите еще раз: ";
+					cin >> fn1 >> fn2 >> fn3;
+				}
 				cout << "Введите ИНН собственника: ";
 				cin >> nn;
-				a.push_back(Owner(fn, nn));
-			} catch (exception e) { cout << e.what(); };
+				while (cin.fail() || nn.length() != 12) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "Некорректный ввод. Введите еще раз: ";
+					cin >> nn;
+				}
+				a.push_back(Owner(fn1+' '+fn2+' '+fn3, nn));
+			} catch (exception e) { 
+				cout << e.what();
+				/*cout << "Введите ФИО собственника: ";
+				getline(cin, fn, '\n');
+				cout << "Введите ИНН собственника: ";
+				cin >> nn;
+				a.push_back(Owner(fn, nn));*/
+			};
 			break;
 		case DEL_OWNER:
 			cout << "Введите номер собственника: ";
