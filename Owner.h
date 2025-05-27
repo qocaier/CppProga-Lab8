@@ -4,7 +4,7 @@
 #include "PropertySimpleFactory.h"
 #include "Factory.h"
 
-class Owner : Ijsonio
+class Owner : public Ijsonio
 {
 	string fullname = "";
 	string inn = "";

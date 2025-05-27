@@ -40,20 +40,23 @@ vector<Owner> a = {
 int owner_choice();
 void print_console();
 void base_interface();
+void exe_interface();
 
 int main(int argc, char* argv[]) {
 	setlocale(LC_ALL, "RU");
-	string inp, outp;
-	cout << "Введите имя входного файла: ";
-	cin >> inp;
-	ifstream fin(inp);
-	while (cin.fail() || !fin.good()) {
-		if (!cin.fail()) clog << "Файла " << inp << "нет!\n";
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Некорректный ввод! Введите еще раз: ";
-		cin >> inp;
-		ifstream fin(inp);
+	if (argc == 1) {
+		exe_interface();
+		return 0;
+	}
+	if (argc == 2) {
+		clog << "Недостаточное количество параметров!\n";
+		return -1;
+	}
+	filesystem::current_path("../../");
+	ifstream fin(argv[1]);
+	if (!fin.good()) {
+		clog << "Файла " << argv[1] << " нет!\n";
+		return -1;
 	}
 	nlohmann::json json = nlohmann::json::parse(fin);
 	fin.close();
@@ -61,16 +64,10 @@ int main(int argc, char* argv[]) {
 	ownr.fromJson(json);
 	nlohmann::json obj = ownr.toJson();
 
-	cout << "Введите имя выходного файла: ";
-	cin >> outp;
-	ofstream fout(outp);
-	while (cin.fail() || !fout.good()) {
-		if (!cin.fail()) clog << "Файла " << outp << "нет!\n";
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Некорректный ввод! Введите еще раз: ";
-		cin >> outp;
-		ofstream fout(outp);
+	ofstream fout(argv[2]);
+	if (!fout.good()) {
+		clog << "Некорректное имя файла: " << argv[2] << '\n';
+		return -1;
 	}
 	fout << obj;
 	fout.close();
@@ -248,4 +245,47 @@ void base_interface()
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
+}
+
+void exe_interface()
+{
+	string inp, outp;
+	cout << "Введите имя входного файла: ";
+	cin >> inp;
+	ifstream fin(inp);
+	/*while (cin.fail() || !fin.good()) {
+		if (!cin.fail()) clog << "Файла " << inp << " нет!\n";
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Некорректный ввод! Введите еще раз: ";
+		cin >> inp;
+		ifstream fin(inp);
+	}*/
+	if (!fin.good()) {
+		clog << "Файла " << inp << " нет!\n";
+		return;
+	}
+	nlohmann::json json = nlohmann::json::parse(fin);
+	fin.close();
+	Owner ownr;
+	ownr.fromJson(json);
+	nlohmann::json obj = ownr.toJson();
+
+	cout << "Введите имя выходного файла: ";
+	cin >> outp;
+	ofstream fout(outp);
+	/*while (cin.fail() || !fout.good()) {
+		if (!cin.fail()) clog << "Некорректное имя файла: " << outp << '\n';
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Некорректный ввод! Введите еще раз: ";
+		cin >> outp;
+		ofstream fout(outp);
+	}*/
+	if (!fout.good()) {
+		clog << "Некорректное имя файла: " << outp << '\n';
+		return;
+	}
+	fout << obj;
+	fout.close();
 }

@@ -8,7 +8,7 @@ typedef map<property_type, Property*> propertyMap;
 
 class Factory
 {
-	Factory() {};
+	Factory();
 public:
 	static Property* create(property_type type);
 };
