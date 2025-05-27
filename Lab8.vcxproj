@@ -130,6 +130,7 @@
     <ClInclude Include="Apartment.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CountryHouse.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="Ijsonio.h" />
     <ClInclude Include="Owner.h" />
     <ClInclude Include="Property.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="Apartment.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="CountryHouse.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Owner.cpp" />
     <ClCompile Include="Property.cpp" />

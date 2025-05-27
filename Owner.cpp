@@ -31,12 +31,42 @@ void Owner::fromJson(nlohmann::json json)
 {
 	fullname = json["fullname"].get<std::string>();
 	inn = json["inn"].get<std::string>();
-	for (auto &prop : json["properties"]) {
-		auto it = prop.begin();
-		string key = it.key();
-		Property* p = PropertySimpleFactory::getProperty(key);
-		p->fromJson(it.value());
-		properties.push_back(p);
+	if (json.contains("properties") && json["properties"].is_array()) {
+		for (auto& prop : json["properties"]) {
+			if (!prop.is_object() || prop.empty()) {
+				clog << "Не объект или собственность без параметров пропущены\n";
+				continue;
+			}
+
+			auto it = prop.begin();
+			string key = it.key();
+
+			Property* p;
+			try {
+				p = PropertySimpleFactory::getProperty(key); // PropertySimpleFactory
+			}
+			catch (exception e) {
+				clog << "Не существует типа собственности " << key << '\n';
+				continue;
+			}
+
+			//property_type type; // Factory
+			//if (key == "Apartment") type = APARTMENT;
+			//else if (key == "Car") type = CAR;
+			//else if (key == "CountryHouse") type = COUNTRYHOUSE;
+			//else {
+			//	   clog << "Не существует типа собственности " << key << '\n';
+			//     continue;
+			//}
+			//p = Factory::create(type);
+
+			p->fromJson(it.value());
+
+			properties.push_back(p);
+		}
+	}
+	else {
+		clog << "Нет properties или они не являются массивом для " << fullname << '\n';
 	}
 }
 

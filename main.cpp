@@ -20,8 +20,8 @@ enum functions {
 };
 
 enum property_types {
-	APARTMENT,
-	CAR,
+	APARTMENT_,
+	CAR_,
 	COUNTRY_HOUSE
 };
 
@@ -48,6 +48,7 @@ int main(int argc, char* argv[]) {
 	cin >> inp;
 	ifstream fin(inp);
 	while (cin.fail() || !fin.good()) {
+		if (!cin.fail()) clog << "Файла " << inp << "нет!\n";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		cout << "Некорректный ввод! Введите еще раз: ";
@@ -64,6 +65,7 @@ int main(int argc, char* argv[]) {
 	cin >> outp;
 	ofstream fout(outp);
 	while (cin.fail() || !fout.good()) {
+		if (!cin.fail()) clog << "Файла " << outp << "нет!\n";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		cout << "Некорректный ввод! Введите еще раз: ";
@@ -152,7 +154,7 @@ void base_interface()
 			}
 
 			switch (n) {
-			case APARTMENT:
+			case APARTMENT_:
 				cout << "Введите площадь квартиры: ";
 				cin >> p;
 				while (cin.fail()) {
@@ -163,7 +165,7 @@ void base_interface()
 				}
 				a[k].addProperty(new Apartment(v, p));
 				break;
-			case CAR:
+			case CAR_:
 				cout << "Введите мощность: ";
 				cin >> p;
 				while (cin.fail()) {
