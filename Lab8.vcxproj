@@ -133,6 +133,7 @@
     <ClInclude Include="Ijsonio.h" />
     <ClInclude Include="Owner.h" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="PropertySimpleFactory.h" />
     <ClInclude Include="TaxRates.h" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Owner.cpp" />
     <ClCompile Include="Property.cpp" />
+    <ClCompile Include="PropertySimpleFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -8,4 +8,13 @@ double Apartment::calcTax()
 
 void Apartment::fromJson(nlohmann::json json)
 {
+    worth = json["worth"].get<int>();
+    square = json["square"].get<double>();
+}
+
+nlohmann::json Apartment::toJson()
+{
+    nlohmann::json json;
+    json["Apartment"]["tax"] = calcTax();
+    return json;
 }

@@ -4,6 +4,10 @@
 #include "Car.h"
 #include "CountryHouse.h"
 #include "Owner.h"
+#include <fstream>
+#include <filesystem>
+
+using namespace std;
 
 enum functions {
 	EXIT,
@@ -35,8 +39,67 @@ vector<Owner> a = {
 
 int owner_choice();
 void print_console();
+void base_interface();
 
-int main() {
+int main(int argc, char* argv[]) {
+	setlocale(LC_ALL, "RU");
+	string inp, outp;
+	cout << "Введите имя входного файла: ";
+	cin >> inp;
+	ifstream fin(inp);
+	while (cin.fail() || !fin.good()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Некорректный ввод! Введите еще раз: ";
+		cin >> inp;
+		ifstream fin(inp);
+	}
+	nlohmann::json json = nlohmann::json::parse(fin);
+	fin.close();
+	Owner ownr;
+	ownr.fromJson(json);
+	nlohmann::json obj = ownr.toJson();
+
+	cout << "Введите имя выходного файла: ";
+	cin >> outp;
+	ofstream fout(outp);
+	while (cin.fail() || !fout.good()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Некорректный ввод! Введите еще раз: ";
+		cin >> outp;
+		ofstream fout(outp);
+	}
+	fout << obj;
+	fout.close();
+}
+
+int owner_choice()
+{
+	int n;
+	cout << "Введите номер собственника: ";
+	cin >> n;
+	while (cin.fail() || n < 0 || n >= a.size()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Некорректный ввод! Введите еще раз: ";
+		cin >> n;
+	};
+	return n;
+}
+
+void print_console()
+{
+	system("cls");
+	for (Owner owner : a) {
+		cout << owner.getData();
+		for (Property* prop : owner.getProperties()) cout << prop->getData();
+	}
+	cout << '\n';
+}
+
+void base_interface()
+{
 	setlocale(LC_ALL, "RU");
 	bool z = true, tutorial = true, zz = false;
 	int k, f, n;
@@ -124,7 +187,7 @@ int main() {
 				break;
 			}
 			break;
-		case DEL_PROPERTY: 
+		case DEL_PROPERTY:
 			cout << "Введите номер собственности: ";
 			cin >> v;
 			while (cin.fail() || v < 0 || v >= a[k].getProperties().size()) {
@@ -153,8 +216,9 @@ int main() {
 					cout << "Некорректный ввод. Введите еще раз: ";
 					cin >> nn;
 				}
-				a.push_back(Owner(fn1+' '+fn2+' '+fn3, nn));
-			} catch (exception e) { 
+				a.push_back(Owner(fn1 + ' ' + fn2 + ' ' + fn3, nn));
+			}
+			catch (exception e) {
 				cout << e.what();
 				/*cout << "Введите ФИО собственника: ";
 				getline(cin, fn, '\n');
@@ -182,28 +246,4 @@ int main() {
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
-}
-
-int owner_choice()
-{
-	int n;
-	cout << "Введите номер собственника: ";
-	cin >> n;
-	while (cin.fail() || n < 0 || n >= a.size()) {
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Некорректный ввод! Введите еще раз: ";
-		cin >> n;
-	};
-	return n;
-}
-
-void print_console()
-{
-	system("cls");
-	for (Owner owner : a) {
-		cout << owner.getData();
-		for (Property* prop : owner.getProperties()) cout << prop->getData();
-	}
-	cout << '\n';
 }

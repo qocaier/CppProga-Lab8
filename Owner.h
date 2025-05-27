@@ -5,10 +5,11 @@
 
 class Owner : Ijsonio
 {
-	string fullname;
-	string inn;
-	vector<Property*> properties;
+	string fullname = "";
+	string inn = "";
+	vector<Property*> properties = {};
 public:
+	Owner() {};
 	Owner(string fn, string nn);
 
 	void addProperty(Property* property);

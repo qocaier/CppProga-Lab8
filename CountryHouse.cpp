@@ -8,4 +8,13 @@ double CountryHouse::calcTax()
 
 void CountryHouse::fromJson(nlohmann::json json)
 {
+    worth = json["worth"].get<int>();
+    distanceFromCity = json["distanceFromCity"].get<unsigned int>();
+}
+
+nlohmann::json CountryHouse::toJson()
+{
+    nlohmann::json json;
+    json["CountryHouse"]["tax"] = calcTax();
+    return json;
 }

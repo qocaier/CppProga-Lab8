@@ -9,4 +9,13 @@ double Car::calcTax()
 
 void Car::fromJson(nlohmann::json json)
 {
+    worth = json["worth"].get<int>();
+    horsepower = json["horsepower"].get<double>();
+}
+
+nlohmann::json Car::toJson()
+{
+    nlohmann::json json;
+    json["Car"]["tax"] = calcTax();
+    return json;
 }

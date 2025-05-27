@@ -1,5 +1,7 @@
 #include "Owner.h"
 #include <stdexcept>
+#include <iostream>
+using namespace std;
 
 Owner::Owner(string fn, string nn) : fullname(fn), inn(nn) {
 	if (nn.length() != 12) throw invalid_argument("invalid argument");
@@ -29,9 +31,23 @@ void Owner::fromJson(nlohmann::json json)
 {
 	fullname = json["fullname"].get<std::string>();
 	inn = json["inn"].get<std::string>();
-	vector<nlohmann::json> props = json["properties"].get<vector<nlohmann::json>>();
-	for (nlohmann::json prop : props) {
-		string key = prop.items().begin().key();
+	for (auto &prop : json["properties"]) {
+		auto it = prop.begin();
+		string key = it.key();
 		Property* p = PropertySimpleFactory::getProperty(key);
+		p->fromJson(it.value());
+		properties.push_back(p);
 	}
+}
+
+nlohmann::json Owner::toJson()
+{
+	nlohmann::json json;
+	json["fullname"] = fullname;
+	json["inn"] = inn;
+	json["sumtax"] = calcSumTax();
+	vector<nlohmann::json> props;
+	for (Property* prop : properties) props.push_back(prop->toJson());
+	json["properties"] = props;
+	return json;
 }
