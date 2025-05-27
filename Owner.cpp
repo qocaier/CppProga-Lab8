@@ -40,10 +40,10 @@ void Owner::fromJson(nlohmann::json json)
 
 			auto it = prop.begin();
 			string key = it.key();
-
 			Property* p;
-			try {
-				p = PropertySimpleFactory::getProperty(key); // PropertySimpleFactory
+
+			try { // PropertySimpleFactory
+				p = PropertySimpleFactory::getProperty(key);
 			}
 			catch (exception e) {
 				clog << "Не существует типа собственности " << key << '\n';
