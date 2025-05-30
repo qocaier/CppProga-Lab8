@@ -7,7 +7,6 @@ using namespace std;
 using namespace TAX_RATES;
 
 class Property : public Ijsonio
-//class Property
 {
 protected:
 	unsigned int worth = 0;

@@ -1,4 +1,5 @@
 #include "Owner.h"
+#include "PropertyFactory.h"
 #include <stdexcept>
 #include <iostream>
 using namespace std;
@@ -49,7 +50,7 @@ void Owner::fromJson(nlohmann::json json)
 				clog << "Не существует типа собственности " << key << '\n';
 				continue;
 			}
-
+			
 			//property_type type; // Factory
 			//if (key == "Apartment") type = APARTMENT;
 			//else if (key == "Car") type = CAR;
@@ -59,6 +60,14 @@ void Owner::fromJson(nlohmann::json json)
 			//     continue;
 			//}
 			//p = Factory::create(type);
+
+			/*if (key == "Apartment") p = PropertyFactory::create<Apartment>(); // PropertyFactory
+			else if (key == "Car") p = PropertyFactory::create<Car>();
+			else if (key == "CountryHouse") p = PropertyFactory::create<CountryHouse>();
+			else {
+				 clog << "Не существует типа собственности " << key << '\n';
+			     continue;
+			}*/
 
 			p->fromJson(it.value());
 

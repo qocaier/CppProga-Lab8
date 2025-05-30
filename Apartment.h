@@ -6,7 +6,7 @@ class Apartment : public Property
 	double square = 0;
 public:
 	Apartment() {};
-	Apartment(unsigned int w, double s) : square(s), Property(w) {};
+	Apartment(unsigned int w, double s) : Property(w), square(s) {};
 
 	double calcTax() override;
 

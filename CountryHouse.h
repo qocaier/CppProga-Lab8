@@ -6,7 +6,7 @@ class CountryHouse : public Property
 	unsigned int distanceFromCity = 0;
 public:
 	CountryHouse() {};
-	CountryHouse(unsigned int w, unsigned int dfc) : distanceFromCity(dfc), Property(w) {};
+	CountryHouse(unsigned int w, unsigned int dfc) : Property(w), distanceFromCity(dfc) {};
 
 	double calcTax() override;
 

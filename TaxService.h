@@ -4,8 +4,8 @@
 class TaxService : public Ijsonio
 {
 public:
-	void fromJson(nlohmann::json json);
-	nlohmann::json toJson();
+	vector<Owner> owners;
 
-	vector<double> calcEachSumTax(vector<Property*>);
+	void fromJson(nlohmann::json json) override;
+	nlohmann::json toJson() override;
 };

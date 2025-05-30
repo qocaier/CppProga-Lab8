@@ -2,14 +2,17 @@
 
 void TaxService::fromJson(nlohmann::json json)
 {
+	Owner ownr;
+	for (auto& own : json) {
+		ownr = Owner();
+		ownr.fromJson(own);
+		owners.push_back(ownr);
+	}
 }
 
 nlohmann::json TaxService::toJson()
 {
-	return nlohmann::json();
-}
-
-vector<double> TaxService::calcEachSumTax(vector<Property*>)
-{
-	
+	vector<nlohmann::json> taxs;
+	for (Owner ownr : owners) taxs.push_back(ownr.toJson());
+	return taxs;
 }

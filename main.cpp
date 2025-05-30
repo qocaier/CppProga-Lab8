@@ -4,6 +4,7 @@
 #include "Car.h"
 #include "CountryHouse.h"
 #include "Owner.h"
+#include "TaxService.h"
 #include <fstream>
 #include <filesystem>
 
@@ -60,9 +61,14 @@ int main(int argc, char* argv[]) {
 	}
 	nlohmann::json json = nlohmann::json::parse(fin);
 	fin.close();
-	Owner ownr;
+
+	TaxService a;
+	a.fromJson(json);
+	nlohmann::json obj = a.toJson();
+
+	/*Owner ownr;
 	ownr.fromJson(json);
-	nlohmann::json obj = ownr.toJson();
+	nlohmann::json obj = ownr.toJson();*/
 
 	ofstream fout(argv[2]);
 	if (!fout.good()) {
@@ -267,9 +273,14 @@ void exe_interface()
 	}
 	nlohmann::json json = nlohmann::json::parse(fin);
 	fin.close();
-	Owner ownr;
+
+	TaxService a;
+	a.fromJson(json);
+	nlohmann::json obj = a.toJson();
+
+	/*Owner ownr;
 	ownr.fromJson(json);
-	nlohmann::json obj = ownr.toJson();
+	nlohmann::json obj = ownr.toJson();*/
 
 	cout << "¬ведите им€ выходного файла: ";
 	cin >> outp;

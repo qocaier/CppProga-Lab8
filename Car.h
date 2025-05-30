@@ -6,7 +6,7 @@ class Car : public Property
 	double horsepower = 0;
 public: 
 	Car() {};
-	Car(unsigned int w, double hp) : horsepower(hp), Property(w) {};
+	Car(unsigned int w, double hp) : Property(w), horsepower(hp) {};
 
 	double calcTax() override;
 
