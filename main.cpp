@@ -54,29 +54,54 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 	filesystem::current_path("../../");
-	ifstream fin(argv[1]);
-	if (!fin.good()) {
+
+
+	//// json
+	//ifstream fin(argv[1]);
+	//if (!fin.good()) {
+	//	clog << "Файла " << argv[1] << " нет!\n";
+	//	return -1;
+	//}
+
+	//nlohmann::json json = nlohmann::json::parse(fin);
+	//fin.close();
+
+	//TaxService a;
+	//a.fromJson(json);
+	//nlohmann::json obj = a.toJson();
+
+	///*Owner ownr;
+	//ownr.fromJson(json);
+	//nlohmann::json obj = ownr.toJson();*/
+
+	//ofstream fout(argv[2]);
+	//if (!fout.good()) {
+	//	clog << "Некорректное имя файла: " << argv[2] << '\n';
+	//	return -1;
+	//}
+	//fout << obj;
+	//fout.close();
+
+
+	// xml
+	pugi::xml_document xml;
+	pugi::xml_parse_result result1 = xml.load_file(argv[1]);
+	if (!result1) {
 		clog << "Файла " << argv[1] << " нет!\n";
 		return -1;
 	}
-	nlohmann::json json = nlohmann::json::parse(fin);
-	fin.close();
 
 	TaxService a;
-	a.fromJson(json);
-	nlohmann::json obj = a.toJson();
+	a.fromXml(xml.document_element());
 
-	/*Owner ownr;
-	ownr.fromJson(json);
-	nlohmann::json obj = ownr.toJson();*/
-
-	ofstream fout(argv[2]);
-	if (!fout.good()) {
+	pugi::xml_document doc;
+	pugi::xml_node doc_node = doc.document_element();
+	a.toXml(doc_node);
+	bool result2 = doc.save_file(argv[2]);
+	if (!result2) {
 		clog << "Некорректное имя файла: " << argv[2] << '\n';
 		return -1;
 	}
-	fout << obj;
-	fout.close();
 }
 
 int owner_choice()

@@ -12,6 +12,8 @@ public:
 
 	void fromJson(nlohmann::json json) override;
 	nlohmann::json toJson() override;
+	void fromXml(const pugi::xml_node& xml) override;
+	void toXml(pugi::xml_node& xml) override;
 
 	string getData() override { return " - Вилла стоит " + to_string(worth) + ", удаленность от города: " + to_string(distanceFromCity) + '\n'; };
 

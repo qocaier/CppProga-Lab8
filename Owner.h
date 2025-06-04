@@ -4,7 +4,7 @@
 #include "PropertySimpleFactory.h"
 #include "Factory.h"
 
-class Owner : public Ijsonio
+class Owner : public Ijsonio, public Ixmlio
 {
 	string fullname = "";
 	string inn = "";
@@ -19,6 +19,8 @@ public:
 
 	void fromJson(nlohmann::json json) override;
 	nlohmann::json toJson() override;
+	void fromXml(const pugi::xml_node& xml) override;
+	void toXml(pugi::xml_node& xml) override;
 
 	string getData() { return fullname + ", »ÕÕ: " + inn + '\n'; };
 	vector<Property*> getProperties() { return properties; };

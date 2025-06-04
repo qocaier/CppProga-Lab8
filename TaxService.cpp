@@ -16,3 +16,19 @@ nlohmann::json TaxService::toJson()
 	for (Owner ownr : owners) taxs.push_back(ownr.toJson());
 	return taxs;
 }
+
+void TaxService::fromXml(const pugi::xml_node& xml)
+{
+	Owner ownr;
+	for (auto& own : xml.child("owners").children("owner")) {
+		ownr = Owner();
+		ownr.fromXml(own);
+		owners.push_back(ownr);
+	}
+}
+
+void TaxService::toXml(pugi::xml_node& xml)
+{
+	pugi::xml_node owners_node = xml.append_child("owners");
+	for (Owner ownr : owners) ownr.toXml(owners_node);
+}

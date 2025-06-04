@@ -18,3 +18,17 @@ nlohmann::json CountryHouse::toJson()
     json["CountryHouse"]["tax"] = calcTax();
     return json;
 }
+
+void CountryHouse::fromXml(const pugi::xml_node& xml)
+{
+    worth = stoul(xml.child_value("worth"));
+    distanceFromCity = stoul(xml.child_value("distancefromcity"));
+}
+
+void CountryHouse::toXml(pugi::xml_node& xml)
+{
+    pugi::xml_node countryhouse_node = xml.append_child("countryhouse");
+
+    pugi::xml_node tax_node = countryhouse_node.append_child("tax");
+    tax_node.text().set(to_string(calcTax()).c_str());
+}

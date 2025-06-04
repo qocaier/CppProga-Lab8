@@ -133,6 +133,7 @@
     <ClInclude Include="CountryHouse.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="Ijsonio.h" />
+    <ClInclude Include="Ixmlio.h" />
     <ClInclude Include="Owner.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyFactory.h" />
@@ -153,7 +154,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="Owner.json" />
+    <None Include="Owners.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Owners.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

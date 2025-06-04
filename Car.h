@@ -12,6 +12,8 @@ public:
 
 	void fromJson(nlohmann::json json) override;
 	nlohmann::json toJson() override;
+	void fromXml(const pugi::xml_node& xml) override;
+	void toXml(pugi::xml_node& xml) override;
 
 	string getData() override { return " - Тачка стоит " + to_string(worth) + ", мощность: " + to_string(horsepower) + '\n'; };
 

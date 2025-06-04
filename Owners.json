@@ -4,25 +4,25 @@
     "inn": "156234897956",
     "properties": [
       {
-        "Apartment": {
+        "apartment": {
           "worth": 45610565,
           "square": 1462.5
         }
       },
       {
-        "Car": {
+        "car": {
           "worth": 5462385,
           "horsepower": 256.88
         }
       },
       {
-        "Car": {
+        "car": {
           "worth": 1047000,
           "horsepower": 90.01
         }
       },
       {
-        "CountryHouse": {
+        "countryhouse": {
           "worth": 525000,
           "distanceFromCity": 3
         }
@@ -30,29 +30,29 @@
     ]
   },
   {
-    "fullname": "Bushuev Misha _",
+    "fullname": "Bushuev Misha",
     "inn": "489123785263",
     "properties": [
       {
-        "Apartment": {
+        "apartment": {
           "worth": 26689575,
           "square": 892.36
         }
       },
       {
-        "Apartment": {
+        "apartment": {
           "worth": 10462381,
           "square": 100.07
         }
       },
       {
-        "Car": {
+        "car": {
           "worth": 5462463,
           "horsepower": 147.246
         }
       },
       {
-        "Car": {
+        "car": {
           "worth": 489900,
           "horsepower": 72.95
         }

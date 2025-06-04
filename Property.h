@@ -2,11 +2,12 @@
 #include <string>
 #include "TaxRates.h"
 #include "Ijsonio.h"
+#include "Ixmlio.h"
 
 using namespace std;
 using namespace TAX_RATES;
 
-class Property : public Ijsonio
+class Property : public Ijsonio, public Ixmlio
 {
 protected:
 	unsigned int worth = 0;
