@@ -55,7 +55,8 @@ int main(int argc, char* argv[]) {
 	}
 	filesystem::current_path("../../");
 
-
+	/*string name1 = argv[1]
+	if (.substr())*/
 	//// json
 	//ifstream fin(argv[1]);
 	//if (!fin.good()) {
@@ -92,11 +93,12 @@ int main(int argc, char* argv[]) {
 	}
 
 	TaxService a;
-	a.fromXml(xml.document_element());
+	const pugi::xml_node root1 = xml.child("owners");
+	a.fromXml(root1);
 
 	pugi::xml_document doc;
-	pugi::xml_node doc_node = doc.document_element();
-	a.toXml(doc_node);
+	pugi::xml_node root2 = doc.append_child("owners");
+	a.toXml(root2);
 	bool result2 = doc.save_file(argv[2]);
 	if (!result2) {
 		clog << "Некорректное имя файла: " << argv[2] << '\n';
@@ -280,48 +282,75 @@ void base_interface()
 
 void exe_interface()
 {
+	//string inp, outp;
+	//cout << "Введите имя входного файла: ";
+	//cin >> inp;
+	//ifstream fin(inp);
+	///*while (cin.fail() || !fin.good()) {
+	//	if (!cin.fail()) clog << "Файла " << inp << " нет!\n";
+	//	cin.clear();
+	//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	//	cout << "Некорректный ввод! Введите еще раз: ";
+	//	cin >> inp;
+	//	ifstream fin(inp);
+	//}*/
+	//if (!fin.good()) {
+	//	clog << "Файла " << inp << " нет!\n";
+	//	return;
+	//}
+	//nlohmann::json json = nlohmann::json::parse(fin);
+	//fin.close();
+
+	//TaxService a;
+	//a.fromJson(json);
+	//nlohmann::json obj = a.toJson();
+
+	///*Owner ownr;
+	//ownr.fromJson(json);
+	//nlohmann::json obj = ownr.toJson();*/
+
+	//cout << "Введите имя выходного файла: ";
+	//cin >> outp;
+	//ofstream fout(outp);
+	///*while (cin.fail() || !fout.good()) {
+	//	if (!cin.fail()) clog << "Некорректное имя файла: " << outp << '\n';
+	//	cin.clear();
+	//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	//	cout << "Некорректный ввод! Введите еще раз: ";
+	//	cin >> outp;
+	//	ofstream fout(outp);
+	//}*/
+	//if (!fout.good()) {
+	//	clog << "Некорректное имя файла: " << outp << '\n';
+	//	return;
+	//}
+	//fout << obj;
+	//fout.close();
+
+
 	string inp, outp;
-	cout << "Введите имя входного файла: ";
+	cout << "введите имя входного файла: ";
 	cin >> inp;
-	ifstream fin(inp);
-	/*while (cin.fail() || !fin.good()) {
-		if (!cin.fail()) clog << "Файла " << inp << " нет!\n";
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Некорректный ввод! Введите еще раз: ";
-		cin >> inp;
-		ifstream fin(inp);
-	}*/
-	if (!fin.good()) {
+	pugi::xml_document xml;
+	pugi::xml_parse_result result1 = xml.load_file(inp.c_str());
+	if (!result1) {
 		clog << "Файла " << inp << " нет!\n";
 		return;
 	}
-	nlohmann::json json = nlohmann::json::parse(fin);
-	fin.close();
 
 	TaxService a;
-	a.fromJson(json);
-	nlohmann::json obj = a.toJson();
-
-	/*Owner ownr;
-	ownr.fromJson(json);
-	nlohmann::json obj = ownr.toJson();*/
+	const pugi::xml_node root1 = xml.document_element();
+	a.fromXml(root1);
 
 	cout << "Введите имя выходного файла: ";
 	cin >> outp;
-	ofstream fout(outp);
-	/*while (cin.fail() || !fout.good()) {
-		if (!cin.fail()) clog << "Некорректное имя файла: " << outp << '\n';
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Некорректный ввод! Введите еще раз: ";
-		cin >> outp;
-		ofstream fout(outp);
-	}*/
-	if (!fout.good()) {
+
+	pugi::xml_document doc;
+	pugi::xml_node root2 = doc.append_child("owners");
+	a.toXml(root2);
+	bool result2 = doc.save_file(outp.c_str());
+	if (!result2) {
 		clog << "Некорректное имя файла: " << outp << '\n';
 		return;
 	}
-	fout << obj;
-	fout.close();
 }

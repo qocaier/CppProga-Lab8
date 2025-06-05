@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<owners>
+	<owner fullname="Max Kharaev" inn="156234897956" sumtax="331184,555000">
+		<apartment>
+			<tax>182442,260000</tax>
+		</apartment>
+		<car>
+			<tax>147484,395000</tax>
+		</car>
+		<car>
+			<tax>732,900000</tax>
+		</car>
+		<countryhouse>
+			<tax>525,000000</tax>
+		</countryhouse>
+	</owner>
+	<owner fullname="Bushuev Misha" inn="489123785263" sumtax="155800,852000">
+		<apartment>
+			<tax>106758,300000</tax>
+		</apartment>
+		<apartment>
+			<tax>10462,381000</tax>
+		</apartment>
+		<car>
+			<tax>38237,241000</tax>
+		</car>
+		<car>
+			<tax>342,930000</tax>
+		</car>
+	</owner>
+</owners>

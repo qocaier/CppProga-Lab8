@@ -82,6 +82,7 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="Owners.json" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Owners.xml" />

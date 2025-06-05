@@ -94,7 +94,7 @@ nlohmann::json Owner::toJson()
 void Owner::fromXml(const pugi::xml_node& xml)
 {
 	fullname = xml.attribute("fullname").as_string();
-	inn = xml.attribute("fullname").as_string();
+	inn = xml.attribute("inn").as_string();
 	for (auto& node : xml.children()) {
 		string key = node.name();
 		Property* p;
@@ -117,13 +117,13 @@ void Owner::fromXml(const pugi::xml_node& xml)
 		//}
 		//p = Factory::create(type);
 
-		/*if (key == "apartment") p = PropertyFactory::create<Apartment>(); // PropertyFactory
-		else if (key == "car") p = PropertyFactory::create<Car>();
-		else if (key == "countryhouse") p = PropertyFactory::create<CountryHouse>();
-		else {
-			 clog << "Не существует типа собственности " << key << '\n';
-			 continue;
-		}*/
+		//if (key == "apartment") p = PropertyFactory::create<Apartment>(); // PropertyFactory
+		//else if (key == "car") p = PropertyFactory::create<Car>();
+		//else if (key == "countryhouse") p = PropertyFactory::create<CountryHouse>();
+		//else {
+		//	 clog << "Не существует типа собственности " << key << '\n';
+		//	 continue;
+		//}
 
 		p->fromXml(node);
 
@@ -141,7 +141,7 @@ void Owner::toXml(pugi::xml_node& xml)
 	inn_attr.set_value(inn.c_str());
 
 	pugi::xml_attribute tax_attr = owner_node.append_attribute("sumtax");
-	inn_attr.set_value(to_string(calcSumTax()).c_str());
+	tax_attr.set_value(to_string(calcSumTax()).c_str());
 
 	for (Property* prop : properties) prop->toXml(owner_node);
 }
