@@ -26,6 +26,13 @@ enum property_types {
 	COUNTRY_HOUSE
 };
 
+enum file_type {
+	XML,
+	JSON,
+	ANOTHER,
+	NONE
+};
+
 const string main_tutorial_str = "[0] exit - выйти из программы\n[1] tutorial - включить или выключить вывод инструкции\n"
 "[2] owner_choice [n] - выбрать собственника под номером n\n[3] add_property - добавить собственность\n[4] del_property [n] - удалить собственность под номером n\n"
 "[5] add_owner - добавить собственника\n[6] del_owner [n] - удалить собственника под номером n\n\n";
@@ -41,67 +48,78 @@ vector<Owner> a = {
 int owner_choice();
 void print_console();
 void base_interface();
-void exe_interface();
+int exe_interface();
+file_type file_recognition(string fn, bool inp);
 
 int main(int argc, char* argv[]) {
 	setlocale(LC_ALL, "RU");
-	if (argc == 1) {
-		exe_interface();
-		return 0;
-	}
+	if (argc == 1) return exe_interface();
 	if (argc == 2) {
 		clog << "Недостаточное количество параметров!\n";
 		return -1;
 	}
 	filesystem::current_path("../../");
 
-	/*string name1 = argv[1]
-	if (.substr())*/
-	//// json
-	//ifstream fin(argv[1]);
-	//if (!fin.good()) {
-	//	clog << "Файла " << argv[1] << " нет!\n";
-	//	return -1;
-	//}
+	file_type ft1 = file_recognition(argv[1], 1);
+	file_type ft2 = file_recognition(argv[2], 0);
+	TaxService a;
 
-	//nlohmann::json json = nlohmann::json::parse(fin);
-	//fin.close();
-
-	//TaxService a;
-	//a.fromJson(json);
-	//nlohmann::json obj = a.toJson();
-
-	///*Owner ownr;
-	//ownr.fromJson(json);
-	//nlohmann::json obj = ownr.toJson();*/
-
-	//ofstream fout(argv[2]);
-	//if (!fout.good()) {
-	//	clog << "Некорректное имя файла: " << argv[2] << '\n';
-	//	return -1;
-	//}
-	//fout << obj;
-	//fout.close();
-
-
-	// xml
-	pugi::xml_document xml;
-	pugi::xml_parse_result result1 = xml.load_file(argv[1]);
-	if (!result1) {
+	switch (ft1)
+	{
+	case XML: {
+		pugi::xml_document xml;
+		pugi::xml_parse_result result1 = xml.load_file(argv[1]);
+		if (!result1) {
+			clog << "Некорректные данные для xml!\n";
+			return -1;
+		}
+		const pugi::xml_node root1 = xml.child("owners");
+		a.fromXml(root1);
+		break;
+	}
+	case JSON: {
+		ifstream fin(argv[1]);
+		nlohmann::json json = nlohmann::json::parse(fin);
+		fin.close();
+		a.fromJson(json);
+		break;
+	}
+	case ANOTHER: {
+		clog << "Некорректный тип файла!\n";
+		return -1;
+	}
+	case NONE: {
 		clog << "Файла " << argv[1] << " нет!\n";
 		return -1;
 	}
+	}
 
-	TaxService a;
-	const pugi::xml_node root1 = xml.child("owners");
-	a.fromXml(root1);
-
-	pugi::xml_document doc;
-	pugi::xml_node root2 = doc.append_child("owners");
-	a.toXml(root2);
-	bool result2 = doc.save_file(argv[2]);
-	if (!result2) {
-		clog << "Некорректное имя файла: " << argv[2] << '\n';
+	switch (ft2)
+	{
+	case XML: {
+		pugi::xml_document doc;
+		pugi::xml_node root2 = doc.append_child("owners");
+		a.toXml(root2);
+		bool result2 = doc.save_file(argv[2]);
+		if (!result2) {
+			clog << "Некорректное имя файла: " << argv[2] << '\n';
+			return -1;
+		}
+		break;
+	}
+	case JSON: {
+		nlohmann::json obj = a.toJson();
+		ofstream fout(argv[2]);
+		if (!fout.good()) {
+			clog << "Некорректное имя файла: " << argv[2] << '\n';
+			return -1;
+		}
+		fout << obj;
+		fout.close();
+		break;
+	}
+	case ANOTHER:
+		clog << "Некорректный тип файла!\n";
 		return -1;
 	}
 }
@@ -280,77 +298,100 @@ void base_interface()
 	}
 }
 
-void exe_interface()
+int exe_interface()
 {
-	//string inp, outp;
-	//cout << "Введите имя входного файла: ";
-	//cin >> inp;
-	//ifstream fin(inp);
-	///*while (cin.fail() || !fin.good()) {
-	//	if (!cin.fail()) clog << "Файла " << inp << " нет!\n";
-	//	cin.clear();
-	//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	//	cout << "Некорректный ввод! Введите еще раз: ";
-	//	cin >> inp;
-	//	ifstream fin(inp);
-	//}*/
-	//if (!fin.good()) {
-	//	clog << "Файла " << inp << " нет!\n";
-	//	return;
-	//}
-	//nlohmann::json json = nlohmann::json::parse(fin);
-	//fin.close();
-
-	//TaxService a;
-	//a.fromJson(json);
-	//nlohmann::json obj = a.toJson();
-
-	///*Owner ownr;
-	//ownr.fromJson(json);
-	//nlohmann::json obj = ownr.toJson();*/
-
-	//cout << "Введите имя выходного файла: ";
-	//cin >> outp;
-	//ofstream fout(outp);
-	///*while (cin.fail() || !fout.good()) {
-	//	if (!cin.fail()) clog << "Некорректное имя файла: " << outp << '\n';
-	//	cin.clear();
-	//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	//	cout << "Некорректный ввод! Введите еще раз: ";
-	//	cin >> outp;
-	//	ofstream fout(outp);
-	//}*/
-	//if (!fout.good()) {
-	//	clog << "Некорректное имя файла: " << outp << '\n';
-	//	return;
-	//}
-	//fout << obj;
-	//fout.close();
-
-
 	string inp, outp;
-	cout << "введите имя входного файла: ";
+	cout << "Введите имя входного файла: ";
 	cin >> inp;
-	pugi::xml_document xml;
-	pugi::xml_parse_result result1 = xml.load_file(inp.c_str());
-	if (!result1) {
-		clog << "Файла " << inp << " нет!\n";
-		return;
-	}
-
-	TaxService a;
-	const pugi::xml_node root1 = xml.document_element();
-	a.fromXml(root1);
 
 	cout << "Введите имя выходного файла: ";
 	cin >> outp;
 
-	pugi::xml_document doc;
-	pugi::xml_node root2 = doc.append_child("owners");
-	a.toXml(root2);
-	bool result2 = doc.save_file(outp.c_str());
-	if (!result2) {
-		clog << "Некорректное имя файла: " << outp << '\n';
-		return;
+	file_type ft1 = file_recognition(inp, 1);
+	file_type ft2 = file_recognition(outp, 0);
+	TaxService a;
+
+	switch (ft1)
+	{
+	case XML: {
+		pugi::xml_document xml;
+		pugi::xml_parse_result result1 = xml.load_file(inp.c_str());
+		if (!result1) {
+			clog << "Некорректные данные для xml!\n";
+			return -1;
+		}
+		const pugi::xml_node root1 = xml.child("owners");
+		a.fromXml(root1);
+		break;
 	}
+	case JSON: {
+		ifstream fin(inp);
+		nlohmann::json json = nlohmann::json::parse(fin);
+		fin.close();
+		a.fromJson(json);
+		break;
+	}
+	case ANOTHER: {
+		clog << "Некорректный тип файла!\n";
+		return -1;
+	}
+	case NONE: {
+		clog << "Файла " << inp << " нет!\n";
+		return -1;
+	}
+	}
+
+	switch (ft2)
+	{
+	case XML: {
+		pugi::xml_document doc;
+		pugi::xml_node root2 = doc.append_child("owners");
+		a.toXml(root2);
+		bool result2 = doc.save_file(outp.c_str());
+		if (!result2) {
+			clog << "Некорректное имя файла: " << outp << '\n';
+			return -1;
+		}
+		break;
+	}
+	case JSON: {
+		nlohmann::json obj = a.toJson();
+		ofstream fout(outp);
+		if (!fout.good()) {
+			clog << "Некорректное имя файла: " << outp << '\n';
+			return -1;
+		}
+		fout << obj;
+		fout.close();
+		break;
+	}
+	case ANOTHER:
+		clog << "Некорректный тип файла!\n";
+		return -1;
+	}
+}
+
+file_type file_recognition(string fn, bool inp)
+{
+	if (inp) {
+		string c1, c2;
+		ifstream fin(fn);
+		if (!fin.good()) return NONE;
+		if (fn.substr(fn.size() - 4) == ".xml") {
+			fin >> c1 >> c2;
+			fin.close();
+			if (c1 == "<?xml" && c2 == "version=\"1.0\"?>") return XML;
+		}
+		else if (fn.substr(fn.size() - 5) == ".json") {
+			fin >> c1 >> c2;
+			fin.close();
+			if (c1 == "[" && c2 == "{") return JSON;
+		}
+		if (fin.is_open()) fin.close();
+	}
+	else {
+		if (fn.substr(fn.size() - 4) == ".xml") return XML;
+		else if (fn.substr(fn.size() - 5) == ".json") return JSON;
+	}
+	return ANOTHER;
 }

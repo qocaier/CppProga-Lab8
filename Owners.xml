@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <owners>
 	<owner fullname="Max Kharaev" inn="156234897956">
 		<apartment>
@@ -36,116 +36,120 @@
 			<horsepower>72.95</horsepower>
 		</car>
 	</owner>
-	<!--<owner fullname="" inn="">
+	<owner fullname="Ketov Kir" inn="874451223588">
 		<apartment>
-			<worth></worth>
-			<square></square>
+			<worth>39564622</worth>
+			<square>1014.46</square>
 		</apartment>
-		<car>
-			<worth></worth>
-			<horsepower></horsepower>
-		</car>
+		<apartment>
+			<worth>7346358</worth>
+			<square>125.94</square>
+		</apartment>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>5489243</worth>
+			<distancefromcity>198</distancefromcity>
 		</countryhouse>
-	</owner>-->
-	<!--<owner fullname="" inn="">
-		<apartment>
-			<worth></worth>
-			<square></square>
-		</apartment>
-		<car>
-			<worth></worth>
-			<horsepower></horsepower>
-		</car>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>2858346</worth>
+			<distancefromcity>26</distancefromcity>
 		</countryhouse>
 	</owner>
-	<owner fullname="" inn="">
+	<owner fullname="Varin Yarik" inn="545238953647">
 		<apartment>
-			<worth></worth>
-			<square></square>
+			<worth>2674381</worth>
+			<square>78.55</square>
 		</apartment>
 		<car>
-			<worth></worth>
-			<horsepower></horsepower>
+			<worth>895369</worth>
+			<horsepower>75.42</horsepower>
 		</car>
+		<car>
+			<worth>1789203</worth>
+			<horsepower>135.25</horsepower>
+		</car>
+	</owner>
+	<owner fullname="Kharitonov Nekit" inn="456278345962">
+		<apartment>
+			<worth>5012222</worth>
+			<square>145.562</square>
+		</apartment>
+		<apartment>
+			<worth>4562475</worth>
+			<square>80.54</square>
+		</apartment>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>401600</worth>
+			<distancefromcity>26</distancefromcity>
 		</countryhouse>
 	</owner>
-	<owner fullname="" inn="">
+	<owner fullname="Kolevatykh Mark" inn="725643845268">
 		<apartment>
-			<worth></worth>
-			<square></square>
+			<worth>8212630</worth>
+			<square>160.454</square>
+		</apartment>
+		<apartment>
+			<worth>10262359</worth>
+			<square>200.15</square>
 		</apartment>
 		<car>
-			<worth></worth>
-			<horsepower></horsepower>
+			<worth>3541552</worth>
+			<horsepower>200.12</horsepower>
 		</car>
+	</owner>
+	<owner fullname="Markov Misha" inn="041510452987">
+		<apartment>
+			<worth>4822164</worth>
+			<square>70.462</square>
+		</apartment>
+		<apartment>
+			<worth>8451266</worth>
+			<square>180.43</square>
+		</apartment>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>700426</worth>
+			<distancefromcity>8</distancefromcity>
 		</countryhouse>
 	</owner>
-	<owner fullname="" inn="">
-		<apartment>
-			<worth></worth>
-			<square></square>
-		</apartment>
+	<owner fullname="Karavaev Danil" inn="450444898749">
 		<car>
-			<worth></worth>
-			<horsepower></horsepower>
+			<worth>3454554</worth>
+			<horsepower>112.56</horsepower>
+		</car>
+		<car>
+			<worth>648594</worth>
+			<horsepower>78.56</horsepower>
 		</car>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>4015623</worth>
+			<distancefromcity>150</distancefromcity>
 		</countryhouse>
 	</owner>
-	<owner fullname="" inn="">
+	<owner fullname="Vyaznikov Leo" inn="711548721564">
 		<apartment>
-			<worth></worth>
-			<square></square>
+			<worth>864234</worth>
+			<square>48.15</square>
 		</apartment>
 		<car>
-			<worth></worth>
-			<horsepower></horsepower>
+			<worth>354542</worth>
+			<horsepower>68.223</horsepower>
 		</car>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>415262</worth>
+			<distancefromcity>17</distancefromcity>
 		</countryhouse>
 	</owner>
-	<owner fullname="" inn="">
+	<owner fullname="Shulepov Nekit" inn="545167895562">
 		<apartment>
-			<worth></worth>
-			<square></square>
+			<worth>645252</worth>
+			<square>38.45</square>
 		</apartment>
-		<car>
-			<worth></worth>
-			<horsepower></horsepower>
-		</car>
 		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
+			<worth>451003</worth>
+			<distancefromcity>256</distancefromcity>
+		</countryhouse>
+		<countryhouse>
+			<worth>1548222</worth>
+			<distancefromcity>215</distancefromcity>
 		</countryhouse>
 	</owner>
-	<owner fullname="" inn="">
-		<apartment>
-			<worth></worth>
-			<square></square>
-		</apartment>
-		<car>
-			<worth></worth>
-			<horsepower></horsepower>
-		</car>
-		<countryhouse>
-			<worth></worth>
-			<distancefromcity></distancefromcity>
-		</countryhouse>
-	</owner>-->
 </owners>

@@ -58,5 +58,107 @@
         }
       }
     ]
+  },
+  {
+    "fullname": "Ketov Kir",
+    "inn": "874451223588",
+    "properties": [
+      {
+        "apartment": {
+          "worth": 39564622,
+          "square": 1014.46
+        }
+      },
+      {
+        "apartment": {
+          "worth": 7346358,
+          "square": 125.94
+        }
+      },
+      {
+        "countryhouse": {
+          "worth": 5489243,
+          "distanceFromCity": 198
+        }
+      },
+      {
+        "countryhouse": {
+          "worth": 2858346,
+          "distanceFromCity": 26
+        }
+      }
+    ]
+  },
+  {
+    "fullname": "Varin Yarik",
+    "inn": "545238953647",
+    "properties": [
+      {
+        "apartment": {
+          "worth": 2674381,
+          "square": 78.55
+        }
+      },
+      {
+        "car": {
+          "worth": 895369,
+          "horsepower": 75.42
+        }
+      },
+      {
+        "car": {
+          "worth": 1789203,
+          "horsepower": 135.25
+        }
+      }
+    ]
+  },
+  {
+    "fullname": "Kharitonov Nekit",
+    "inn": "456278345962",
+    "properties": [
+      {
+        "apartment": {
+          "worth": 5012222,
+          "square": 145.562
+        }
+      },
+      {
+        "apartment": {
+          "worth": 4562475,
+          "square": 80.54
+        }
+      },
+      {
+        "countryhouse": {
+          "worth": 401600,
+          "distanceFromCity": 26
+        }
+      }
+    ]
+  },
+  {
+    "fullname": "Kolevatykh Mark",
+    "inn": "725643845268",
+    "properties": [
+      {
+        "apartment": {
+          "worth": 8212630,
+          "square": 160.454
+        }
+      },
+      {
+        "apartment": {
+          "worth": 10262359,
+          "square": 200.15
+        }
+      },
+      {
+        "car": {
+          "worth": 3541552,
+          "horsepower": 200.12
+        }
+      }
+    ]
   }
 ]
